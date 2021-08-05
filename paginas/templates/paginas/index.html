@@ -1,20 +1,14 @@
+  
 {% extends 'paginas/modelo.html' %}
 
-{% load static %}
 
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Página Inicial</title>
+{% block conteudo %}
+<h3>Página inicial</h3>
 
-    <link rel="stylesheet" href="{% static 'css/estilo.css' %}">
-</head>
-<body>
-    <h3>Bem vindo ao módulo de páginas</h3>
+{% if user.perfil.nome_completo %}
+Bem vindo ao sistema {{ user.perfil.nome_completo }}.
+{% else %}
+Você precisa completar seu cadastro. Acesse os <a href="{}">meus dados</a> para atualizar.
+{% endif %}
 
-    <img src="{% static 'img/logo.png' %}" width="200" alt=""> 
-</body>
-</html>
+{% endblock %}

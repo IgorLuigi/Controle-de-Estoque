@@ -6,3 +6,9 @@ class PaginaInicial(TemplateView):
 
 class SobreView(TemplateView):
     template_name = 'paginas/sobre.html'
+
+# class PedidoView(TemplateView):
+#     template_name = 'paginas/pedido.html'
+
+class ModeloView(TemplateView):
+    template_name = 'paginas/modelo.html'
