@@ -1,3 +1,93 @@
-from django.shortcuts import render
+from django.views.generic.edit import CreateView, UpdateView
+
+from.models import Estado, Cidade, Cliente, Funcionario, Fornecedor, Produtos, Vendas
+
+from django.urls import reverse_lazy
 
 # Create your views here.
+
+class EstadoCreate(CreateView):
+    model = Estado
+    fields = ['nomeestado', 'sigla']
+    templates_name = 'cadastros/form.html'
+    success_url = reverse_lazy('index')
+
+class CidadeCreate(CreateView):
+    model = Cidade
+    fields = ['nomecidade', 'estado']
+    template_name = 'cadastros/form.html'
+    success_url = reverse_lazy('index')
+
+class ClienteCreate(CreateView):
+    model = Cliente
+    fields = ['nomecliente', 'cpf', 'rg', 'email', 'telefone', 'endereco', 'datacadastro', 'status', 'cidade']
+    template_name = 'cadastros/form.html'
+    success_url = reverse_lazy('index')
+
+class FuncionarioCreate(CreateView):
+    model = Funcionario
+    fields = ['nomefuncionario', 'cpf', 'rg', 'email', 'telefone', 'endereco', 'datacadastro', 'status', 'cidade']
+    template_name = 'cadastros/form.html'
+    success_url = reverse_lazy('index')
+
+class FornecedorCreate(CreateView):
+    model = Fornecedor
+    fields = ['nomefornecedor', 'cnpj', 'endereco', 'datacadastro', 'status', 'cidade']
+    template_name = 'cadastros/form.html'
+    success_url = reverse_lazy('index')
+
+class ProdutoCreate(CreateView):
+    model = Produtos
+    fields = ['nomeproduto', 'marca', 'teste', 'dataproducao', 'datavalidade', 'preco', 'datacadastro', 'status', 'fornecedor']
+    template_name = 'cadastros/form.html'
+    success_url = reverse_lazy('index')
+
+class VendasCreate(CreateView):
+    model = Vendas
+    fields = ['quantidade', 'precototal', 'datavenda', 'status', 'cliente', 'funcionario']
+    template_name = 'cadastros/form.html'
+    success_url = reverse_lazy('index')
+
+################ UPDATE ###########################################################################
+
+class EstadoUpdate(UpdateView):
+    model = Estado
+    fields = ['nomeestado', 'sigla']
+    template_name = 'cadastros/form.html'
+    success_url = reverse_lazy('index')
+
+class CidadeUpdate(UpdateView):
+    model = Cidade
+    fields = ['nomecidade', 'estado']
+    template_name = 'cadastros/form.html'
+    success_url = reverse_lazy('index')
+
+class ClienteUpdate(UpdateView):
+    model = Cliente
+    fields = ['nomecliente', 'cpf', 'rg', 'email', 'telefone', 'endereco', 'datacadastro', 'status', 'cidade']
+    template_name = 'cadastros/form.html'
+    success_url = reverse_lazy('index')
+
+class FuncionarioUpdate(UpdateView):
+    model = Funcionario
+    fields = ['nomefuncionario', 'cpf', 'rg', 'email', 'telefone', 'endereco', 'datacadastro', 'status', 'cidade']
+    template_name = 'cadastros/form.html'
+    success_url = reverse_lazy('index')
+
+class FornecedorUpdate(UpdateView):
+    model = Fornecedor
+    fields = ['nomefornecedor', 'cnpj', 'endereco', 'datacadastro', 'status', 'cidade']
+    template_name = 'cadastros/form.html'
+    success_url = reverse_lazy('index')
+
+class ProdutoUpdate(UpdateView):
+    model = Produtos
+    fields = ['nomeproduto', 'marca', 'teste', 'dataproducao', 'datavalidade', 'preco', 'datacadastro', 'status', 'fornecedor']
+    template_name = 'cadastros/form.html'
+    success_url = reverse_lazy('index')
+
+class VendasUpdate(UpdateView):
+    model = Vendas
+    fields = ['quantidade', 'precototal', 'datavenda', 'status', 'cliente', 'funcionario']
+    template_name = 'cadastros/form.html'
+    success_url = reverse_lazy('index')
