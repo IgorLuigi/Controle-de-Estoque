@@ -4,6 +4,9 @@
 
 {% block conteudo %}
 <h3>Lista de Funcionários registrados</h3>
+
+<a href="{% url 'cadastrar-funcionario' %}" class="btn btn-primary btn-sm">Adicionar Funcionário</a>
+
 <hr>
 <div class="table-responsive">
     <table class="table table-striped">

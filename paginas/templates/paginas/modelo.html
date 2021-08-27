@@ -79,12 +79,18 @@
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
 
-                                <a class="dropdown-item" href="">Clientes</a>
+                                <a class="dropdown-item" href="{% url 'cadastrar-cliente' %}">Clientes</a>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="">Produtos</a>
+                                <a class="dropdown-item" href="{% url 'cadastrar-produto' %}">Produtos</a>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="">Cidades</a>
-                                <a class="dropdown-item" href="">Estados</a>
+                                <a class="dropdown-item" href="{% url 'cadastrar-fornecedor' %}">Fornecedores</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="{% url 'cadastrar-funcionario' %}">Funcionários</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="{% url 'cadastrar-venda' %}">Vendas</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="{% url 'cadastrar-cidade' %}">Cidades</a>
+                                <a class="dropdown-item" href="{% url 'cadastrar-estado' %}">Estados</a>
                         
 
                             </div>
