@@ -40,7 +40,11 @@ INSTALLED_APPS = [
     'paginas.apps.PaginasConfig',
     'cadastros.apps.CadastrosConfig',
     # 'nomedoapp.apps.NomedoappConfig',
+    'crispy_forms',
 ]
+
+#CRISPY FORMS
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
