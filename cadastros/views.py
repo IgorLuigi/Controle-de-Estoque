@@ -1,4 +1,6 @@
-from django.views.generic.edit import CreateView, UpdateView
+from typing import List
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from django.views.generic.list import ListView
 
 from.models import Estado, Cidade, Cliente, Funcionario, Fornecedor, Produtos, Vendas
 
@@ -10,7 +12,7 @@ class EstadoCreate(CreateView):
     model = Estado
     fields = ['nomeestado', 'sigla']
     templates_name = 'cadastros/form.html'
-    success_url = reverse_lazy('index')
+    success_url = reverse_lazy('listar=estado')
 
 class CidadeCreate(CreateView):
     model = Cidade
@@ -54,7 +56,7 @@ class EstadoUpdate(UpdateView):
     model = Estado
     fields = ['nomeestado', 'sigla']
     template_name = 'cadastros/form.html'
-    success_url = reverse_lazy('index')
+    success_url = reverse_lazy('listar-estado')
 
 class CidadeUpdate(UpdateView):
     model = Cidade
@@ -91,3 +93,70 @@ class VendasUpdate(UpdateView):
     fields = ['quantidade', 'precototal', 'datavenda', 'status', 'cliente', 'funcionario']
     template_name = 'cadastros/form.html'
     success_url = reverse_lazy('index')
+
+################ DELETE ###########################################################################
+
+class EstadoDelete(DeleteView):
+    model = Estado
+    template_name = 'cadastros/form-excluir.html'
+    success_url = reverse_lazy('listar-estado')
+
+class CidadeDelete(DeleteView):
+    model = Cidade
+    template_name = 'cadastros/form-excluir.html'
+    success_url = reverse_lazy('index')
+
+class ClienteDelete(DeleteView):
+    model = Cliente
+    template_name = 'cadastros/form-excluir.html'
+    success_url = reverse_lazy('index')
+
+class FuncionarioDelete(DeleteView):
+    model = Funcionario
+    template_name = 'cadastros/form-excluir.html'
+    success_url = reverse_lazy('index')
+
+class FornecedorDelete(DeleteView):
+    model = Fornecedor
+    template_name = 'cadastros/form-excluir.html'
+    success_url = reverse_lazy('index')
+
+class ProdutoDelete(DeleteView):
+    model = Produtos
+    template_name = 'cadastros/form-excluir.html'
+    success_url = reverse_lazy('index')
+
+class VendasDelete(DeleteView):
+    model = Vendas
+    template_name = 'cadastros/form-excluir.html'
+    success_url = reverse_lazy('index')
+
+################ LIST ###########################################################################
+
+class EstadoList(ListView): 
+    model = Estado
+    template_name = 'cadastros/listar/estado.html'
+
+class CidadeList(ListView):
+    model = Cidade
+    template_name = 'cadastros/listar/cidade.html'
+
+class ClienteList(ListView):
+    model = Cliente
+    template_name = 'cadastros/listar/cliente.html'
+
+class FuncionarioList(ListView):
+    model = Funcionario
+    template_name = 'cadastros/listar/funcionario.html'
+
+class FornecedorList(ListView):
+    model = Fornecedor
+    template_name = 'cadastros/listar/fornecedor.html'
+
+class ProdutoList(ListView):
+    model = Produtos
+    template_name = 'cadastros/listar/produtos.html'
+
+class VendasList(ListView):
+    model = Vendas
+    template_name = 'cadastros/listar/vendas.html'

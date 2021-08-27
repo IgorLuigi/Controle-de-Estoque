@@ -81,7 +81,6 @@ class Fornecedor(models.Model):
 class Produtos(models.Model):
     nomeproduto = models.CharField(max_length=50, verbose_name="Produto")
     marca = models.CharField(max_length=30, verbose_name="Marca")
-    teste = models.CharField(max_length=30, verbose_name="Marca")
     dataproducao = models.DateField(verbose_name="Data Produção")
     datavalidade = models.DateField(verbose_name="Data Validade")
     preco = models.DecimalField(decimal_places=2, max_digits=7, verbose_name="Preço")

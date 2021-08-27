@@ -1,0 +1,37 @@
+{% extends 'paginas/modelo.html' %}
+
+{% load static %}
+
+{% block conteudo %}
+<h3>Lista de Clientes registrados</h3>
+<hr>
+<div class="table-responsive">
+    <table class="table table-striped">
+        <tr>
+            <th>ID</th>
+            <th>Nome Cliente</th>
+            <th>CPF</th>
+            <th>Cidade</th>
+            <th>Opções</th>
+        </tr>
+
+        {% for cliente in object_list %}
+        <tr>
+            <td>{{ cliente.pk }}</td>
+            <td>{{ cliente.nomecliente }}</td>
+            <td>{{ cliente.cpf }}</td>
+            <td>{{ cliente.cidade.nomecidade }}</td>
+            <td>
+                <a href="{% url 'editar-cliente' cliente.pk %}" class="btn btn-warning btn-sm" title="Editar">E</a>
+                <a href="{% url 'excluir-cliente' cliente.pk %}" class="btn btn-danger btn-sm" title="Excluir">X</a>
+            </td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="3">Nenhum cliente foi cadastrado</td>
+        </tr>
+        {% endfor %}
+
+    </table>
+</div>
+{% endblock %}

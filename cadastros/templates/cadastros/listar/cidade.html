@@ -1,0 +1,35 @@
+{% extends 'paginas/modelo.html' %}
+
+{% load static %}
+
+{% block conteudo %}
+<h3>Lista de Cidades registrados</h3>
+<hr>
+<div class="table-responsive">
+    <table class="table table-striped">
+        <tr>
+            <th>ID</th>
+            <th>Nome Cidade</th>
+            <th>Estado</th>
+            <th>Opções</th>
+        </tr>
+
+        {% for cidade in object_list %}
+        <tr>
+            <td>{{ cidade.pk }}</td>
+            <td>{{ cidade.nomecidade }}</td>
+            <td>{{ cidade.estado.sigla }}</td>
+            <td>
+                <a href="{% url 'editar-cidade' cidade.pk %}" class="btn btn-warning btn-sm" title="Editar">E</a>
+                <a href="{% url 'excluir-cidade' cidade.pk %}" class="btn btn-danger btn-sm" title="Excluir">X</a>
+            </td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="3">Nenhuma cidade foi cadastrado</td>
+        </tr>
+        {% endfor %}
+
+    </table>
+</div>
+{% endblock %}

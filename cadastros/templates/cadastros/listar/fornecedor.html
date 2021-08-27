@@ -1,0 +1,37 @@
+{% extends 'paginas/modelo.html' %}
+
+{% load static %}
+
+{% block conteudo %}
+<h3>Lista de Fornecedores registrados</h3>
+<hr>
+<div class="table-responsive">
+    <table class="table table-striped">
+        <tr>
+            <th>ID</th>
+            <th>Nome Fornecedor</th>
+            <th>CNPJ</th>
+            <th>Cidade</th>
+            <th>Opções</th>
+        </tr>
+
+        {% for fornecedor in object_list %}
+        <tr>
+            <td>{{ fornecedor.pk }}</td>
+            <td>{{ fornecedor.nomefornecedor }}</td>
+            <td>{{ fornecedor.cnpj }}</td>
+            <td>{{ fornecedor.cidade.nomecidade }}</td>
+            <td>
+                <a href="{% url 'editar-fornecedor' fornecedor.pk %}" class="btn btn-warning btn-sm" title="Editar">E</a>
+                <a href="{% url 'excluir-fornecedor' fornecedor.pk %}" class="btn btn-danger btn-sm" title="Excluir">X</a>
+            </td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="3">Nenhum fornecedor foi cadastrado</td>
+        </tr>
+        {% endfor %}
+
+    </table>
+</div>
+{% endblock %}
