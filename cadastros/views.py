@@ -8,6 +8,8 @@ from django.urls import reverse_lazy
 
 from django.contrib.auth.mixins import LoginRequiredMixin
 
+from braces.views import GroupRequiredMixin
+
 # Create your views here.
 
 class EstadoCreate(LoginRequiredMixin, CreateView):
@@ -31,8 +33,9 @@ class ClienteCreate(LoginRequiredMixin, CreateView):
     template_name = 'cadastros/form.html'
     success_url = reverse_lazy('listar-clientes')
 
-class FuncionarioCreate(LoginRequiredMixin, CreateView):
+class FuncionarioCreate(GroupRequiredMixin, LoginRequiredMixin, CreateView):
     login_url = reverse_lazy('login')
+    group_required = [u"Administrador"]
     model = Funcionario
     fields = ['nomefuncionario', 'cpf', 'rg', 'email', 'telefone', 'endereco', 'datacadastro', 'status', 'cidade']
     template_name = 'cadastros/form.html'
@@ -123,8 +126,9 @@ class ClienteDelete(LoginRequiredMixin, DeleteView):
     template_name = 'cadastros/form-excluir.html'
     success_url = reverse_lazy('listar-clientes')
 
-class FuncionarioDelete(LoginRequiredMixin, DeleteView):
+class FuncionarioDelete(GroupRequiredMixin, LoginRequiredMixin, DeleteView):
     login_url = reverse_lazy('login')
+    group_required = [u"Administrador"]
     model = Funcionario
     template_name = 'cadastros/form-excluir.html'
     success_url = reverse_lazy('listar-funcionarios')
@@ -164,8 +168,9 @@ class ClienteList(LoginRequiredMixin, ListView):
     model = Cliente
     template_name = 'cadastros/listar/cliente.html'
 
-class FuncionarioList(LoginRequiredMixin, ListView):
+class FuncionarioList(GroupRequiredMixin, LoginRequiredMixin, ListView):
     login_url = reverse_lazy('login')
+    group_required = [u"Administrador"]
     model = Funcionario
     template_name = 'cadastros/listar/funcionario.html'
 
