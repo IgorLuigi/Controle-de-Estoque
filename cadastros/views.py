@@ -19,6 +19,18 @@ class EstadoCreate(LoginRequiredMixin, CreateView):
     templates_name = 'cadastros/form.html'
     success_url = reverse_lazy('listar-estado')
 
+    def form_valid(self, form):
+        url = super().form_valid(form)
+        return url
+
+    def get_context_data(self, *args, **kwargs):
+        context = super().get_context_data(*args, **kwargs)
+
+        context['titulo'] = "Cadastro de Estados"
+
+        return context
+
+
 class CidadeCreate(LoginRequiredMixin, CreateView):
     login_url = reverse_lazy('login')
     model = Cidade
@@ -26,12 +38,34 @@ class CidadeCreate(LoginRequiredMixin, CreateView):
     template_name = 'cadastros/form.html'
     success_url = reverse_lazy('listar-cidades')
 
+    def form_valid(self, form):
+        url = super().form_valid(form)
+        return url
+    
+    def get_context_data(self, *args, **kwargs):
+        context = super().get_context_data(*args, **kwargs)
+
+        context['titulo'] = "Cadastro de Cidades"
+
+        return context
+
 class ClienteCreate(LoginRequiredMixin, CreateView):
     login_url = reverse_lazy('login')
     model = Cliente
     fields = ['nomecliente', 'cpf', 'rg', 'email', 'telefone', 'endereco', 'datacadastro', 'status', 'cidade']
     template_name = 'cadastros/form.html'
     success_url = reverse_lazy('listar-clientes')
+
+    def form_valid(self, form):
+        url = super().form_valid(form)
+        return url
+
+    def get_context_data(self, *args, **kwargs):
+        context = super().get_context_data(*args, **kwargs)
+
+        context['titulo'] = "Cadastro de Clientes"
+
+        return context
 
 class FuncionarioCreate(GroupRequiredMixin, LoginRequiredMixin, CreateView):
     login_url = reverse_lazy('login')
@@ -41,12 +75,34 @@ class FuncionarioCreate(GroupRequiredMixin, LoginRequiredMixin, CreateView):
     template_name = 'cadastros/form.html'
     success_url = reverse_lazy('listar-funcionarios')
 
+    def form_valid(self, form):
+        url = super().form_valid(form)
+        return url
+        
+    def get_context_data(self, *args, **kwargs):
+        context = super().get_context_data(*args, **kwargs)
+
+        context['titulo'] = "Cadastro de Funcionários"
+
+        return context
+
 class FornecedorCreate(LoginRequiredMixin, CreateView):
     login_url = reverse_lazy('login')
     model = Fornecedor
     fields = ['nomefornecedor', 'cnpj', 'endereco', 'datacadastro', 'status', 'cidade']
     template_name = 'cadastros/form.html'
     success_url = reverse_lazy('listar-fornecedores')
+
+    def form_valid(self, form):
+        url = super().form_valid(form)
+        return url
+    
+    def get_context_data(self, *args, **kwargs):
+        context = super().get_context_data(*args, **kwargs)
+
+        context['titulo'] = "Cadastro de Fornecedores"
+
+        return context
 
 class ProdutoCreate(LoginRequiredMixin, CreateView):
     login_url = reverse_lazy('login')
@@ -55,12 +111,34 @@ class ProdutoCreate(LoginRequiredMixin, CreateView):
     template_name = 'cadastros/form.html'
     success_url = reverse_lazy('listar-produtos')
 
+    def form_valid(self, form):
+        url = super().form_valid(form)
+        return url
+
+    def get_context_data(self, *args, **kwargs):
+        context = super().get_context_data(*args, **kwargs)
+
+        context['titulo'] = "Cadastro de Produtos"
+
+        return context
+
 class VendasCreate(LoginRequiredMixin, CreateView):
     login_url = reverse_lazy('login')
     model = Vendas
     fields = ['quantidade', 'precototal', 'datavenda', 'status', 'cliente', 'funcionario']
     template_name = 'cadastros/form.html'
     success_url = reverse_lazy('listar-vendas')
+
+    def form_valid(self, form):
+        url = super().form_valid(form)
+        return url
+    
+    def get_context_data(self, *args, **kwargs):
+        context = super().get_context_data(*args, **kwargs)
+
+        context['titulo'] = "Cadastro de Vendas"
+
+        return context
 
 ################ UPDATE ###########################################################################
 
@@ -70,11 +148,25 @@ class EstadoUpdate(UpdateView):
     template_name = 'cadastros/form.html'
     success_url = reverse_lazy('listar-estado')
 
+    def get_context_data(self, *args, **kwargs):
+        context = super().get_context_data(*args, **kwargs)
+
+        context['titulo'] = "Editar Cadastro de Estados"
+
+        return context
+
 class CidadeUpdate(UpdateView):
     model = Cidade
     fields = ['nomecidade', 'estado']
     template_name = 'cadastros/form.html'
     success_url = reverse_lazy('listar-cidades')
+
+    def get_context_data(self, *args, **kwargs):
+        context = super().get_context_data(*args, **kwargs)
+
+        context['titulo'] = "Editar Cadastro de Cidades"
+
+        return context
 
 class ClienteUpdate(UpdateView):
     model = Cliente
@@ -82,11 +174,25 @@ class ClienteUpdate(UpdateView):
     template_name = 'cadastros/form.html'
     success_url = reverse_lazy('listar-clientes')
 
+    def get_context_data(self, *args, **kwargs):
+        context = super().get_context_data(*args, **kwargs)
+
+        context['titulo'] = "Editar Cadastro de Clientes"
+
+        return context
+
 class FuncionarioUpdate(UpdateView):
     model = Funcionario
     fields = ['nomefuncionario', 'cpf', 'rg', 'email', 'telefone', 'endereco', 'datacadastro', 'status', 'cidade']
     template_name = 'cadastros/form.html'
     success_url = reverse_lazy('listar-funcionarios')
+
+    def get_context_data(self, *args, **kwargs):
+        context = super().get_context_data(*args, **kwargs)
+
+        context['titulo'] = "Editar Cadastro de Funcionários"
+
+        return context
 
 class FornecedorUpdate(UpdateView):
     model = Fornecedor
@@ -94,17 +200,38 @@ class FornecedorUpdate(UpdateView):
     template_name = 'cadastros/form.html'
     success_url = reverse_lazy('listar-fornecedores')
 
+    def get_context_data(self, *args, **kwargs):
+        context = super().get_context_data(*args, **kwargs)
+
+        context['titulo'] = "Editar Cadastro de Fornecedores"
+
+        return context
+
 class ProdutoUpdate(UpdateView):
     model = Produtos
     fields = ['nomeproduto', 'marca', 'teste', 'dataproducao', 'datavalidade', 'preco', 'datacadastro', 'status', 'fornecedor']
     template_name = 'cadastros/form.html'
     success_url = reverse_lazy('listar-produtos')
 
+    def get_context_data(self, *args, **kwargs):
+        context = super().get_context_data(*args, **kwargs)
+
+        context['titulo'] = "Editar Cadastro de Produtos"
+
+        return context
+
 class VendasUpdate(UpdateView):
     model = Vendas
     fields = ['quantidade', 'precototal', 'datavenda', 'status', 'cliente', 'funcionario']
     template_name = 'cadastros/form.html'
     success_url = reverse_lazy('listar-vendas')
+
+    def get_context_data(self, *args, **kwargs):
+        context = super().get_context_data(*args, **kwargs)
+
+        context['titulo'] = "Editar Cadastro de Vendas"
+
+        return context
 
 ################ DELETE ###########################################################################
 
