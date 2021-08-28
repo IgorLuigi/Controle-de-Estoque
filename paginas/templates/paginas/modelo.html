@@ -71,6 +71,7 @@
                             </a>
                         </li>
 
+                        {% if request.user.is_authenticated %}
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdownMenuLink"
                                 role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -95,6 +96,7 @@
 
                             </div>
                         </li>
+                        {% endif %}
 
 
                         <li class="nav-item ">
@@ -113,7 +115,7 @@
 
                     <ul class="navbar-nav">
 
-                        
+                        {% if request.user.is_authenticated %}
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdownMenuLink"
                                 role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -128,12 +130,19 @@
                                     <i class="fa fa-lock" aria-hidden="true"></i>
                                     Alterar senha</a>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="">
+                                <a class="dropdown-item" href="{% url 'logout' %}">
                                     <i class="fa fa-sign-out" aria-hidden="true"></i>
                                     Sair</a>
                             </div>
                         </li>
-                     
+                        {% else %}
+                        <li class="nav-item ">
+                            <a class="nav-link" href="{% url 'login' %}">
+                                <i class="fa fa-sing-in" aria-hidden="true"></i>
+                                Login
+                            </a>
+                        </li>
+                        {% endif %}
                         
                       
 
