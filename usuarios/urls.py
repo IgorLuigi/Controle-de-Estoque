@@ -2,7 +2,7 @@ from django.urls import path
 
 from django.contrib.auth import views as auth_views
 
-from .views import UsuarioCreate
+from .views import UsuarioCreate, PerfilUpdate
 
 urlpatterns = [
 
@@ -13,5 +13,7 @@ urlpatterns = [
     path('logout/', auth_views.LogoutView.as_view(), name='logout'),
 
     path('registrar/', UsuarioCreate.as_view(), name='register'),
+
+    path('atualizar-dados/', PerfilUpdate.as_view(), name='atualizar-dados'),
 
 ]
