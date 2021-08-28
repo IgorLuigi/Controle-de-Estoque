@@ -9,16 +9,20 @@
 
 <hr>
 <div class="table-responsive">
-    <table class="table table-striped">
-        <tr>
-            <th>ID</th>
-            <th>Nome Fornecedor</th>
-            <th>CNPJ</th>
-            <th>Cidade</th>
-            <th>Opções</th>
-        </tr>
+    <table class="table table-striped" id="tabela-fornecedor">
 
-        {% for fornecedor in object_list %}
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nome Fornecedor</th>
+                <th>CNPJ</th>
+                <th>Cidade</th>
+                <th>Opções</th>
+            </tr>
+        </thead>
+        
+        <tbody>
+            {% for fornecedor in object_list %}
         <tr>
             <td>{{ fornecedor.pk }}</td>
             <td>{{ fornecedor.nomefornecedor }}</td>
@@ -35,16 +39,18 @@
         </tr>
         {% endfor %}
 
+        </tbody>
+        
     </table>
 </div>
 {% endblock %}
 
-{% block scrpits %}
+{% block scripts %}
 <script>
 
     $(documetn).ready(function(){
 
-        alert("Importação OK!");
+        $("#tabela-fornecedor").DataTable();
 
     });
 

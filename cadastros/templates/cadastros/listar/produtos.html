@@ -9,44 +9,49 @@
 
 <hr>
 <div class="table-responsive">
-    <table class="table table-striped">
-        <tr>
-            <th>ID</th>
-            <th>Nome Produto</th>
-            <th>Marca</th>
-            <th>Preço</th>
-            <th>Fornecedor</th>
-            <th>Opções</th>
-        </tr>
-
-        {% for produtos in object_list %}
-        <tr>
-            <td>{{ produtos.pk }}</td>
-            <td>{{ produtos.nomeproduto }}</td>
-            <td>{{ produtos.marca }}</td>
-            <td>{{ produtos.preco }}</td>
-            <td>{{ produtos.fornecedor.nomefornecedor }}</td>
-            <td>
-                <a href="{% url 'editar-produto' produtos.pk %}" class="btn btn-warning btn-sm" title="Editar">E</a>
-                <a href="{% url 'excluir-produto' produtos.pk %}" class="btn btn-danger btn-sm" title="Excluir">X</a>
-            </td>
-        </tr>
-        {% empty %}
-        <tr>
-            <td colspan="3">Nenhum produto foi cadastrado</td>
-        </tr>
-        {% endfor %}
-
+    <table class="table table-striped" id="tabela-produto">
+        
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nome Produto</th>
+                <th>Marca</th>
+                <th>Preço</th>
+                <th>Fornecedor</th>
+                <th>Opções</th>
+            </tr>
+        </thead>
+        
+        <tbody>
+            {% for produtos in object_list %}
+            <tr>
+                <td>{{ produtos.pk }}</td>
+                <td>{{ produtos.nomeproduto }}</td>
+                <td>{{ produtos.marca }}</td>
+                <td>{{ produtos.preco }}</td>
+                <td>{{ produtos.fornecedor.nomefornecedor }}</td>
+                <td>
+                    <a href="{% url 'editar-produto' produtos.pk %}" class="btn btn-warning btn-sm" title="Editar">E</a>
+                    <a href="{% url 'excluir-produto' produtos.pk %}" class="btn btn-danger btn-sm" title="Excluir">X</a>
+                </td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="3">Nenhum produto foi cadastrado</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+        
     </table>
 </div>
 {% endblock %}
 
-{% block scrpits %}
+{% block scripts %}
 <script>
 
     $(documetn).ready(function(){
 
-        alert("Importação OK!");
+        $("#tabela-produto").DataTable();
 
     });
 

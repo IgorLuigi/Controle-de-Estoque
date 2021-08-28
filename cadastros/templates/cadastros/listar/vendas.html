@@ -9,33 +9,38 @@
 
 <hr>
 <div class="table-responsive">
-    <table class="table table-striped">
-        <tr>
-            <th>ID</th>
-            <th>Quantidade</th>
-            <th>Preço Total</th>
-            <th>Cliente</th>
-            <th>Funcionário</th>
-            <th>Opções</th>
-        </tr>
-
-        {% for vendas in object_list %}
-        <tr>
-            <td>{{ vendas.pk }}</td>
-            <td>{{ vendas.quuantidade }}</td>
-            <td>{{ vendas.precototal }}</td>
-            <td>{{ vendas.cliente.nomecliente }}</td>
-            <td>{{ vendas.funcionario.nomefuncionario }}</td>
-            <td>
-                <a href="{% url 'editar-vendas' vendas.pk %}" class="btn btn-warning btn-sm" title="Editar">E</a>
-                <a href="{% url 'excluir-vendas' vendas.pk %}" class="btn btn-danger btn-sm" title="Excluir">X</a>
-            </td>
-        </tr>
-        {% empty %}
-        <tr>
-            <td colspan="3">Nenhuma venda foi cadastrado</td>
-        </tr>
-        {% endfor %}
+    <table class="table table-striped" id="tabela-venda">
+        
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Quantidade</th>
+                <th>Preço Total</th>
+                <th>Cliente</th>
+                <th>Funcionário</th>
+                <th>Opções</th>
+            </tr>
+        </thead>
+       
+        <tbody>
+            {% for vendas in object_list %}
+            <tr>
+                <td>{{ vendas.pk }}</td>
+                <td>{{ vendas.quuantidade }}</td>
+                <td>{{ vendas.precototal }}</td>
+                <td>{{ vendas.cliente.nomecliente }}</td>
+                <td>{{ vendas.funcionario.nomefuncionario }}</td>
+                <td>
+                    <a href="{% url 'editar-vendas' vendas.pk %}" class="btn btn-warning btn-sm" title="Editar">E</a>
+                    <a href="{% url 'excluir-vendas' vendas.pk %}" class="btn btn-danger btn-sm" title="Excluir">X</a>
+                </td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="3">Nenhuma venda foi cadastrado</td>
+            </tr>
+            {% endfor %}
+        </tbody>
 
     </table>
 </div>
@@ -46,7 +51,7 @@
 
     $(documetn).ready(function(){
 
-        alert("Importação OK!");
+        $("#tabela-venda").DataTable();
 
     });
 

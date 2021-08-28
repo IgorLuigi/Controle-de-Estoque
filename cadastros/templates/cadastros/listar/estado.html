@@ -9,15 +9,18 @@
 
 <hr>
 <div class="table-responsive">
-    <table class="table table-striped">
-        <tr>
-            <th>ID</th>
-            <th>Nome Estado</th>
-            <th>Sigla</th>
-            <th>Opções</th>
-        </tr>
-
-        {% for estado in object_list %}
+    <table class="table table-striped" id="tabela-estado">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nome Estado</th>
+                <th>Sigla</th>
+                <th>Opções</th>
+            </tr>
+        </thead>
+        
+        <tbody>
+            {% for estado in object_list %}
         <tr>
             <td>{{ estado.pk }}</td>
             <td>{{ estado.nomeestado }}</td>
@@ -32,17 +35,20 @@
             <td colspan="3">Nenhum estado foi cadastrado</td>
         </tr>
         {% endfor %}
+        </tbody>
+        
 
     </table>
 </div>
 {% endblock %}
 
-{% block scrpits %}
+{% block scripts %}
 <script>
 
     $(documetn).ready(function(){
 
-        alert("Importação OK!");
+        $("#tabela-estado").DataTable();
+
 
     });
 

@@ -290,6 +290,7 @@ class CidadeList(LoginRequiredMixin, ListView):
     model = Cidade
     template_name = 'cadastros/listar/cidade.html'
 
+
 class ClienteList(LoginRequiredMixin, ListView):
     login_url = reverse_lazy('login')
     model = Cliente
