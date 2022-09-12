@@ -22,7 +22,7 @@ urlpatterns = [
   path('editar/fornecedor/<int:pk>/', FornecedorUpdate.as_view(), name='editar-fornecedor'),
   path('editar/funcionario/<int:pk>/', FuncionarioUpdate.as_view(), name='editar-funcionario'),
   path('editar/produto/<int:pk>/', ProdutoUpdate.as_view(), name='editar-produto'),
-  path('editar/venda/<int:pk>/', VendasUpdate.as_view(), name='editar-venda'),
+  path('editar/venda/<int:pk>/', VendasUpdate.as_view(), name='editar-vendas'),
 
 
   path('excluir/estado/<int:pk>/', EstadoDelete.as_view(), name='excluir-estado'),
@@ -31,7 +31,7 @@ urlpatterns = [
   path('excluir/fornecedor/<int:pk>/', FornecedorDelete.as_view(), name='excluir-fornecedor'),
   path('excluir/funcionario/<int:pk>/', FuncionarioDelete.as_view(), name='excluir-funcionario'),
   path('excluir/produto/<int:pk>/', ProdutoDelete.as_view(), name='excluir-produto'),
-  path('excluir/venda/<int:pk>/', VendasDelete.as_view(), name='excluir-venda'),
+  path('excluir/venda/<int:pk>/', VendasDelete.as_view(), name='excluir-vendas'),
 
   
   path('listar/estado/', EstadoList.as_view(), name='listar-estados'),

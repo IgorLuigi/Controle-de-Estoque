@@ -16,8 +16,8 @@ class EstadoCreate(LoginRequiredMixin, CreateView):
     login_url = reverse_lazy('login')
     model = Estado
     fields = ['nomeestado', 'sigla']
-    templates_name = 'cadastros/form.html'
-    success_url = reverse_lazy('listar-estado')
+    template_name = 'cadastros/form.html'
+    success_url = reverse_lazy('listar-estados')
 
     def form_valid(self, form):
         url = super().form_valid(form)
@@ -107,7 +107,7 @@ class FornecedorCreate(LoginRequiredMixin, CreateView):
 class ProdutoCreate(LoginRequiredMixin, CreateView):
     login_url = reverse_lazy('login')
     model = Produtos
-    fields = ['nomeproduto', 'marca', 'teste', 'dataproducao', 'datavalidade', 'preco', 'datacadastro', 'status', 'fornecedor']
+    fields = ['nomeproduto', 'marca', 'dataproducao', 'datavalidade', 'preco', 'datacadastro', 'status', 'fornecedor']
     template_name = 'cadastros/form.html'
     success_url = reverse_lazy('listar-produtos')
 
@@ -146,7 +146,7 @@ class EstadoUpdate(UpdateView):
     model = Estado
     fields = ['nomeestado', 'sigla']
     template_name = 'cadastros/form.html'
-    success_url = reverse_lazy('listar-estado')
+    success_url = reverse_lazy('listar-estados')
 
     def get_context_data(self, *args, **kwargs):
         context = super().get_context_data(*args, **kwargs)
@@ -209,7 +209,7 @@ class FornecedorUpdate(UpdateView):
 
 class ProdutoUpdate(UpdateView):
     model = Produtos
-    fields = ['nomeproduto', 'marca', 'teste', 'dataproducao', 'datavalidade', 'preco', 'datacadastro', 'status', 'fornecedor']
+    fields = ['nomeproduto', 'marca', 'dataproducao', 'datavalidade', 'preco', 'datacadastro', 'status', 'fornecedor']
     template_name = 'cadastros/form.html'
     success_url = reverse_lazy('listar-produtos')
 
@@ -239,7 +239,7 @@ class EstadoDelete(LoginRequiredMixin, DeleteView):
     login_url = reverse_lazy('login')
     model = Estado
     template_name = 'cadastros/form-excluir.html'
-    success_url = reverse_lazy('listar-estado')
+    success_url = reverse_lazy('listar-estados')
 
 class CidadeDelete(LoginRequiredMixin, DeleteView):
     login_url = reverse_lazy('login')
