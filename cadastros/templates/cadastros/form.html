@@ -32,8 +32,36 @@
 
         alert("OK!");
 
-        $("#id_cpf").mask("000.000.00-00");
-        $("#id_telefone").mask("(00) 00000-0000");
+        var SPMaskBehavior = function (val) {
+            return val.replace(/\D/g, '').length === 11 ? '(00) 00000-0000' : '(00) 0000-00009';
+        },
+            spOptions = {
+                onKeyPress: function (val, e, field, options) {
+                    field.mask(SPMaskBehavior.apply({}, arguments), options);
+                }
+            };
+
+        $('#id_telefone').mask(SPMaskBehavior, spOptions);
+
+        var CpfRegex = function (val) {
+            return val.replace(/\D/g, '').length > 11 ? '000.000.00-00' : '000.000.00-00';
+        },
+            docOptions = {
+                onKeyPress: function (val, e, field, options) {
+                    field.mask(CpfRegex.apply({}, arguments), options);
+                }
+            };
+
+        $('#id_cpf').mask(SPMaskBehavior, spOptions);
+
+        //$("#id_cpf").mask("000.000.00-00");
+        //$("#id_telefone").mask("(00) 00000-0000");
+        $("#id_dataproducao").mask("00/00/0000");
+        $("#id_datavalidade").mask("00/00/0000");
+        $("#id_datacadastro").mask("00/00/0000");
+        $("#id_datavenda").mask("00/00/0000");
+        
+
     });
 </script>
 

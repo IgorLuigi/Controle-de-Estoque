@@ -19,6 +19,7 @@
     <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
     <link href="{% static 'css/font-awesome.min.css' %}" rel="stylesheet">
 
+
     <!-- CSS adicional -->
     <link href="{% static 'css/modelo.css' %}" rel="stylesheet">
 
@@ -236,6 +237,12 @@
     <script src="{% static 'js/bootstrap.min.js' %}"></script>
 
     <script type="text/javascript" src="https://cdn.datatables.net/v/bs4/dt-1.10.22/datatables.min.js"></script>
+
+    <scprit>
+        $(document).ready(function(){
+            $(".table").DataTable();
+        });
+    </scprit>
 
     <!-- Bloco destinado aos scripts para cada página -->
     {% block scripts %}
