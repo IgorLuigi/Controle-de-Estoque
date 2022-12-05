@@ -16,7 +16,7 @@ class EstadoCreate(LoginRequiredMixin, CreateView):
     login_url = reverse_lazy('login')
     model = Estado
     fields = ['nomeestado', 'sigla']
-    templates_name = 'cadastros/form.html'
+    template_name = 'cadastros/form.html'
     success_url = reverse_lazy('listar-estado')
 
     def form_valid(self, form):

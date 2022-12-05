@@ -18,25 +18,25 @@
                 <th>Opções</th>
             </tr>
         </thead>
-        
+
         <tbody>
             {% for estado in object_list %}
-        <tr>
-            <td>{{ estado.pk }}</td>
-            <td>{{ estado.nomeestado }}</td>
-            <td>{{ estado.sigla }}</td>
-            <td>
-                <a href="{% url 'editar-estado' estado.pk %}" class="btn btn-warning btn-sm" title="Editar">E</a>
-                <a href="{% url 'excluir-estado' estado.pk %}" class="btn btn-danger btn-sm" title="Excluir">X</a>
-            </td>
-        </tr>
-        {% empty %}
-        <tr>
-            <td colspan="3">Nenhum estado foi cadastrado</td>
-        </tr>
-        {% endfor %}
+            <tr>
+                <td>{{ estado.pk }}</td>
+                <td>{{ estado.nomeestado }}</td>
+                <td>{{ estado.sigla }}</td>
+                <td>
+                    <a href="{% url 'editar-estado' estado.pk %}" class="btn btn-warning btn-sm" title="Editar">E</a>
+                    <a href="{% url 'excluir-estado' estado.pk %}" class="btn btn-danger btn-sm" title="Excluir">X</a>
+                </td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="3">Nenhum estado foi cadastrado</td>
+            </tr>
+            {% endfor %}
         </tbody>
-        
+
 
     </table>
 </div>
@@ -45,14 +45,14 @@
 {% block scripts %}
 <script>
 
-    $(documetn).ready(function(){
+    $(document).ready(function () {
 
         $("#tabela-estado").DataTable();
 
 
     });
 
-    
+
 
 </script>
 {% endblock %}

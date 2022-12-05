@@ -34,7 +34,7 @@ urlpatterns = [
   path('excluir/venda/<int:pk>/', VendasDelete.as_view(), name='excluir-venda'),
 
   
-  path('listar/estado/', EstadoList.as_view(), name='listar-estados'),
+  path('listar/estado/', EstadoList.as_view(), name='listar-estado'),
   path('listar/cidade/', CidadeList.as_view(), name='listar-cidades'),
   path('listar/cliente/', ClienteList.as_view(), name='listar-clientes'),
   path('listar/fornecedor/', FornecedorList.as_view(), name='listar-fornecedores'),
